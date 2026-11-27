@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        char type = sc.next().charAt(0);
+        int quantity = sc.nextInt();
+        int distance = sc.nextInt();
+
+        if ((type != 'V' && type != 'N') || quantity < 1 || distance <= 0) {
+            System.out.println(-1);
+            return;
+        }
+
+        int plateCost;
+        if (type == 'V') {
+            plateCost = 12;
+        } else {
+            plateCost = 15;
+        }
+
+        int foodCost = plateCost * quantity;
+
+        int delivery = 0;
+        if (distance > 6) {
+            delivery = 3 * 1 + (distance - 6) * 2;
+        } else if (distance > 3) {
+            delivery = (distance - 3) * 1;
+        }
+
+        int total = foodCost + delivery;
+        System.out.println(total);
+    }
+}
